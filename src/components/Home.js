@@ -3,16 +3,18 @@ import profile from '../assets/images/SWALIH-PHOTO.jpg'
 import '../style/home.css'
 import ArrowForwardIosSharpIcon from '@material-ui/icons/ArrowForwardIosSharp';
 import ArrowBackIosSharpIcon from '@material-ui/icons/ArrowBackIosSharp';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useEffect } from "react";
 import Posts from "./Posts";
+import { StateContext } from "../context/StateProvider";
 
 const Home = () => {
 
     const [show, setShow] = useState(false);
     const element = document?.getElementById('story');
     const scroll = element?.scrollLeft;
-
+    const [{ user },dispatch] = useContext(StateContext);
+    console.log(user);
     const scrollRight = () => {
         document?.getElementById('story')?.scrollBy(150,0);
         setShow(true)
@@ -31,7 +33,7 @@ const Home = () => {
     }, [scroll])
     return (
         <Container fluid className="home">
-            <Row className="">
+            <Row className="mb-5">
                 <Col className="">
                     <div className="story-container d-flex">
                         {show && <span className="scroll-left">

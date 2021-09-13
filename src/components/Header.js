@@ -11,13 +11,15 @@ import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
 import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import '../style/Header.css';
 import profile from '../assets/images/SWALIH-PHOTO.jpg'
 import { Link, useLocation } from 'react-router-dom';
 import CancelIcon from '@material-ui/icons/Cancel';
+import '../style/Header.css';
+import NewPost from './modals/new-post';
 
 const Header = () => {
     const location = useLocation();
+    const [newPost, setNewPost] = useState(false);
 
     return (
         <Container fluid className="border-bottom">
@@ -34,16 +36,16 @@ const Header = () => {
                         {/* <span className="cancelIcon"><CancelIcon /></span> */}
                     </div>
                     <div className="icons" >
-                        <Link to="/">
-                            {location.pathname === "/" ? <HomeIcon /> :
+                        <Link to="/home">
+                            {location.pathname === "/home" ? <HomeIcon /> :
                             <HomeOutlinedIcon />}
                         </Link>
                         <Link to="/message">
                             {location.pathname === "/message" ? <SendIcon /> :
                             <SendOutlinedIcon />}
                         </Link>
-                        <Link to="/add">
-                            {location.pathname ==="/add" ? <AddBoxIcon /> :
+                        <Link to="#" onClick={() =>setNewPost(true)}>
+                            {newPost ? <AddBoxIcon /> :
                             <AddBoxOutlinedIcon />}
                         </Link>
                         <Link to="/explore">
@@ -59,6 +61,7 @@ const Header = () => {
                     </div>
                 </Col>
             </Row>
+            <NewPost isOpen={newPost} toggle={() => setNewPost(!newPost)} />
         </Container>
     )
 }

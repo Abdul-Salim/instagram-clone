@@ -4,6 +4,7 @@ import profile from '../assets/images/SWALIH-PHOTO.jpg'
 import '../style/Post.css'
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css'
+import useOutsideClick from '../hooks/use-outside-click';
 
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
@@ -11,6 +12,7 @@ import ModeCommentOutlinedIcon from '@material-ui/icons/ModeCommentOutlined';
 import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
 import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutlined';
 import InsertEmoticonOutlinedIcon from '@material-ui/icons/InsertEmoticonOutlined';
+import instance from "../helpers/api";
 
 const Posts = () => {
 
@@ -18,7 +20,21 @@ const Posts = () => {
     const [newMessage, setNewMessage] = useState('');
 
     const ref = useRef();
+    useOutsideClick(ref, () => {
+      if (showEmoji) {
+        setShowEmoji(false);
+      }
+    });
 
+    const testService = () => {
+        instance.post('http://localhost:9000/test')
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((res) => {
+            console.log(res)
+        })
+    }
     return (
         <Row>
             <Col>
@@ -79,7 +95,7 @@ const Posts = () => {
                                 <input value={newMessage} onChange={(e) => setNewMessage(e.target.value) } placeholder="Add a comment" />
                             </div>
                             <div>
-                                <button disabled={newMessage.length <=0} className="post">Post</button>
+                                <button onClick={()=> testService()} disabled={newMessage.length <=0} className="post">Post</button>
                             </div>
                         </div>
                     </div>
