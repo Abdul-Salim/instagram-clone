@@ -1,21 +1,15 @@
 import React, { useEffect, useContext } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { auth, db, storage } from './firebase';
 import { StateContext } from './context/StateProvider';
 
-import Header from './components/Header';
-import Messages from './components/Messages';
-import Explore from './components/Explore'
-import Add from './components/Add';
-import Home from './components/Home';
-import Login from './components/auth/Login';
-import Signup from './components/auth/Signup';
+import Portal from './components/layout/portal';
 
 function App() {
   const [user, dispatch] = useContext(StateContext)
-
+  const history = useHistory();
   useEffect(() => {
 
     auth.onAuthStateChanged((authUser) => {
@@ -32,41 +26,32 @@ function App() {
         dispatch({
           type: 'SET_USER',
           user: null,
-        })
+        });
       }
     });
   }, []);
 
+  useEffect(() => {
+    const token = localStorage.getItem('authUser');
+    dispatch({
+      type: 'SET_USER',
+      user: JSON.parse(token),
+    })
+  }, [])
+
+  // const history = useHistory();
+  // useEffect(() => {
+  //   const token = localStorage.getItem('authUser');
+  //   if (!token) {
+  //     console.log('yhi sos pwwpp');
+  //     history.replace('/login');
+  //   }
+  // }, [history])
+
   return (
     <div className="App">
       <Router>
-        <Switch>
-          <Route exact path="/home">
-            <Header />
-            <Home />
-          </Route>
-          <Route exact path="/message">
-            <Header />
-            <Messages />
-          </Route>
-          <Route exact path="/explore">
-            <Header />
-            <Explore />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/signup">
-            <Signup />
-          </Route>
-          <Route path="/">
-            {user ?
-              <Redirect to="/home" />
-              :
-              <Redirect to="/login" />
-            }
-          </Route>
-        </Switch>
+        <Portal />
       </Router>
     </div>
   );

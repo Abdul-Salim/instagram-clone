@@ -1,0 +1,67 @@
+.stories {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+.story-header {
+    display: flex;
+    position: relative;
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    border-radius: 3px;
+    margin-bottom: 24px;
+    padding: 16px 0;
+    padding-left: 120px;
+    /* margin-left: 15% !important; */
+    justify-content: space-evenly;
+    overflow: auto;
+    scroll-behavior: smooth;
+    width: 614px;
+}
+.story-header div {
+    max-height: 122px;
+    max-width: 80px;
+}
+.story-header p {
+    height: 14px;
+    font-size: 12px;
+}
+.story-header::-webkit-scrollbar {
+    display:none;
+}
+.scroll-left {
+    position: absolute;
+    left: 10px;
+    top: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    height: min-content;
+    font-size: 10px !important;
+    padding: 4px;
+    width: min-content;
+    z-index: 10;
+}
+.scroll-right {
+    position: absolute;
+    left: 570px;
+    top: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    height: min-content;
+    width: min-content;
+    font-size: 10px !important;
+    padding: 4px;
+    z-index: 10;
+}
+.stories span .MuiSvgIcon-root {
+    font-size: 1rem !important;
+    height: 15px !important;
+    width: 15px !important;
+}
+
+.story-image {
+    width: 66px;
+    height: 66px;
+    margin: 0px 6px;
+    padding: 4px;
+    border: solid 2px rgb(246, 7, 7);
+}

@@ -50,6 +50,16 @@
 .size-section {
     width: 30%;
     border-left: solid 1px #DEE2E6;
+    padding: 10px;
+}
+.size-section form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.size-section button {
+    width: 100%;
 }
 .post-preview {
     position: relative;
@@ -87,8 +97,8 @@
 }
 .crop-container {
     position: relative;
-    width: 520px;
-    height: 580px;
+    /* width: 520px;
+    height: 580px; */
 }
 .close {
     cursor: pointer;

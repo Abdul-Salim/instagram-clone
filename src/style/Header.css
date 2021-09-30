@@ -48,14 +48,19 @@
     background-color: red !important;
 }
 .profile-image {
-    height: 24px;
-    width: 24px;
+    /* margin-top: 3px; */
+    height: 26px;
+    width: 26px;
     border-radius: 50%;
+    cursor: pointer;
 }
 .icons {
     display: flex;
     justify-content: space-between;
     width: 23%;
+}
+.icons > a {
+    margin-right: 15px;
 }
 .icons > a > svg {
     cursor: pointer;
@@ -68,3 +73,17 @@
     font-size: 1rem;
     margin-bottom: 3px;
 }
+.profile-dropdown {
+    width: 200px !important;
+}
+.profile-active {
+    border: 1px solid rgba(var(--i1d,38,38,38),1);
+    border-radius: 50%;
+    display: flex;
+}
+.padding-1 {
+    padding: 2px;
+}
+/* .profile-active {
+
+} */

@@ -60,6 +60,7 @@
     border: none;
     outline: none;
     width: 100%;
+    background-color: #FAFAFA;
 }
 .emoji-mart-bar, .emoji-mart-search {
     display: none !important;

@@ -1,0 +1,30 @@
+.chat-list{
+    display: flex;
+    flex-direction: column;
+    max-width: 349px;
+}
+.messages {
+    width: 935px !important;
+}
+.chatList-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding-left: 40%;
+}
+.chatList-header .name {
+    font-size: 16px;
+    font-weight: 600;
+}
+.chatList-subHeader p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #8e8e8e;
+}
+.chatList-subHeader .active-tab {
+    color: #262626;
+}
+.active-tab {
+    border-bottom: solid 1px #262626;
+}
